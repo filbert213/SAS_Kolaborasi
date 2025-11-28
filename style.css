@@ -1,0 +1,273 @@
+:root{
+  --nav-yellow: #FFF29D;
+  --tape-yellow: #FFD400;
+  --tape-black: #111;
+  --accent: #FFD400;
+  --primary-dark: #2b0d28;
+  --text-light: #f5f5f5;
+  --card-dark: #532560;
+}
+
+/* Reset */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  color:#111;
+  background: linear-gradient(180deg,#3c2241 0%, #3d2b40 100%);
+  transition: background .25s, color .25s;
+}
+
+/* DARK MODE */
+body.dark{
+  background: linear-gradient(180deg,#150f17 0%, #150f17 100%);
+  color:var(--text-light);
+}
+
+/* NAVBAR (light yellow background, square buttons) */
+.navbar{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 18px;
+  background: var(--nav-yellow);
+  border-bottom: 2px solid rgba(0,0,0,0.06);
+  transition: all .22s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+/* scrolled navbar */
+.navbar.scrolled{
+  padding:8px 18px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* Brand */
+.brand{
+  font-family: "Luckiest Guy", cursive;
+  font-size:26px;
+  color:#111;
+  letter-spacing:1px;;
+  padding-bottom: 3px;
+}
+
+body.dark .brand{ color:#dcdcdc; }
+
+/* links container */
+.links{
+  display:flex;
+  gap:8px;
+  position:relative;
+  align-items:center;
+  margin-left: auto;
+  padding:6px;
+}
+
+/* nav link: solid rectangle, square corners */
+.nav-link{
+  display:inline-block;
+  padding:8px 14px;
+  text-decoration:none;
+  color:#111;
+  font-weight:700;
+  border-radius: 12px;
+  position:relative;
+  z-index:2;
+  transition: color .15s, transform .15s;
+}
+
+/* hover effect */
+.nav-link:hover{ transform: translateY(-2px); color:#000; }
+
+/* sliding highlight behind nav links (solid) */
+#navHighlight{
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:0;
+  background:var(--accent);
+  z-index:1;
+  transition: transform .26s cubic-bezier(.2,.9,.2,1), width .26s cubic-bezier(.2,.9,.2,1);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  border-radius: 10px;
+}
+
+/* Dark mode adjust for nav */
+body.dark .navbar{ background: #2a2130; }
+body.dark #navHighlight{ background:#473752; }
+body.dark .nav-link{ color:#dcdcdc; }
+
+/* HERO (only on home) */
+.hero{
+  position:relative;
+  overflow:hidden;
+  background: linear-gradient(180deg,#3e0b37 0%, #2b0b2a 60%);
+  color:var(--text-light);
+}
+
+/* diagonal black & yellow hazard tape (top and bottom) */
+.tape-top, .tape-bottom{
+  height:60px;
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      var(--tape-black) 0 30px,
+      var(--tape-yellow) 30px 60px
+    );
+  box-shadow: inset 0 -6px 12px rgba(0,0,0,0.35);
+}
+
+.image {
+    text-align: center;
+    max-width: 150%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.35);
+}
+
+/* hero inner layout */
+.hero-inner{
+  display:flex;
+  gap:20px;
+  align-items:flex-start;
+  padding:34px 40px;
+}
+
+/* left: big rotated title */
+.hero-left{ flex:1; min-height:220px; position:relative; }
+
+.hero-title{
+  font-family: "Luckiest Guy", cursive;
+  font-size:96px;
+  line-height:0.78;
+  margin:12px 0 0 0;
+  transform: rotate(-6deg);
+  color:#fff;
+  text-shadow: 0 6px 30px rgba(0,0,0,0.5);
+}
+
+/* second line accent */
+.hero-title .accent{
+  display:block;
+  color:#FFD9B1;
+  font-size:116px;
+  transform: translateX(-8px) rotate(-6deg);
+  letter-spacing:2px;
+}
+
+/* right topic box */
+.hero-right{ width:420px; padding-bottom:18px; }
+.topic-title{
+  font-family: "Luckiest Guy", cursive;
+  font-size:30px;
+  margin:0 0 8px 0;
+  color:#fff;
+}
+
+.hero-middle img {
+  width: 120%;
+  max-width: 160px;
+  height: auto;
+  padding-right: 10px;
+}
+
+.topic-box{
+  background: rgba(0,0,0,0.35);
+  padding-left:14px;
+  border-radius:12px;
+  color:#fff;
+  border: 1px solid #68147098;
+  box-shadow: 0 8px 40px #68147098;
+}
+
+/* MAIN / sections */
+main{ padding: 22px; }
+.section{
+  background:var(--card-dark); /* BLACK */
+  padding:18px;
+  border-radius:10px;
+  margin-bottom:18px;
+  color:var(--text-light);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.36);
+}
+
+/* dark card variant for home small cards */
+.card.dark{ 
+    background:#532560; 
+    color:var(--text-light); 
+    padding-left: 20px;
+}
+
+/* link color */
+.header-link {
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.header-link:hover h3 {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* grid */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+}
+
+/* media row: image left, text right */
+.media-row{ display:flex; gap:16px; align-items:flex-start; }
+.inline-img{ width:300px; flex:0 0 300px; border-radius:8px; }
+.media-text{ flex:1; }
+@media (max-width:900px){ .media-row{ flex-direction:column; } .inline-img{ width:100%; flex:0 0 auto; } }
+
+/* sub-hero for other pages (keeps dark look) */
+.sub-hero{
+  padding:28px;
+  background: linear-gradient(90deg, #4a2e4a, #2b1a2b);
+  color:#fff;
+  display:flex;
+  gap:28px;
+  align-items:flex-start;
+  justify-content:space-between;
+}
+
+.sub-hero-left{ flex: 1; }
+.sub-hero-left h1{ margin:0 0 12px 0; }
+.sub-hero-left h5{ margin:0; }
+
+.hero-right{ width:300px; flex-shrink:0; }
+.hero-right img{ width:100%; height:auto; border-radius:8px; }
+
+/* video */
+.video-row{ display:flex; gap:28px; align-items:flex-start; justify-content:flex-start; margin-bottom:18px; }
+.video-column{ flex: 0 0 auto; }
+.video-column iframe{ width:820px; max-width:100%; height:460px; border:0; border-radius:8px; display:block; }
+.side-column{ width:480px; max-width:40%; display:flex; flex-direction:column; }
+.video-poster{ width:480px; max-width:100%; height:auto; border-radius:8px; box-shadow: 0 8px 28px rgba(0,0,0,0.22); display:block; }
+
+/* footer */
+.footer{ padding:18px; text-align:center; color: #bbb; }
+
+/* responsive */
+@media (max-width:900px){
+  .hero-inner{ flex-direction:column; padding:22px; }
+  .hero-title{ font-size:60px; transform: rotate(-4deg); }
+  .hero-title .accent{ font-size:76px }
+  .hero-right{ width:100% }
+  .navbar{ padding:10px }
+  #navHighlight{ display:none } /* optional on small screens */
+
+  /* Stack video and poster/side column on small screens */
+  .video-row{ flex-direction:column; }
+  .video-column iframe{ max-width:100%; height:auto; }
+  .side-column{ max-width:100%; width:100%; }
+  .video-poster{ max-width:100%; width:100%; }
+}
